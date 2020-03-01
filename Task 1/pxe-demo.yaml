@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: pxe-demo
+  name: pxe-demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: pxe-demo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: pxe-demo
+        app: v1
+    spec:
+      containers:
+      - image: nj93/pxe-demo:master-5a2d7f3869623dbfa0f227e387b41e93e1a2108a
+        name: pxe-demo
+        ports:
+        - containerPort: 8080
+        resources: 
+          limits:
+            cpu: 40m        
+status: {}
